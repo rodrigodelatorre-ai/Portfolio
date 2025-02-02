@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 191 97% 77%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    --neural-dots: 0, 242, 255;
+    --neon-primary: 0, 242, 255;
+    --neon-secondary: 255, 0, 229;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 191 97% 77%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --neural-dots: 0, 242, 255;
+    --neon-primary: 0, 242, 255;
+    --neon-secondary: 255, 0, 229;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Efectos de Neón Mejorados */
+.neon-text {
+  position: relative;
+  text-shadow: 
+    0 0 10px rgba(var(--neon-primary), 0.8),
+    0 0 20px rgba(var(--neon-primary), 0.8),
+    0 0 30px rgba(var(--neon-primary), 0.8),
+    0 0 40px rgba(var(--neon-primary), 0.4);
+}
+
+.neon-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: rgba(var(--neon-primary), 0.1);
+  filter: blur(8px);
+}
+
+.neon-border {
+  position: relative;
+  box-shadow: 
+    0 0 10px rgba(var(--neon-primary), 0.5),
+    inset 0 0 10px rgba(var(--neon-primary), 0.5);
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, 
+    rgba(var(--neon-primary), 0.2),
+    rgba(var(--neon-secondary), 0.2)
+  );
+  border-radius: inherit;
+  filter: blur(8px);
+}
+
+/* Header Navigation */
+.header-nav {
+  @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80;
+  border-bottom: 1px solid rgba(var(--neon-primary), 0.2);
+}
+
+.header-nav-link {
+  @apply relative px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.header-nav-link::after {
+  content: '';
+  @apply absolute left-0 right-0 bottom-0 h-0.5 transform scale-x-0 transition-transform duration-300;
+  background: linear-gradient(90deg, 
+    rgba(var(--neon-primary), 1),
+    rgba(var(--neon-secondary), 1)
+  );
+}
+
+.header-nav-link:hover::after {
+  @apply scale-x-100;
+}
+
+/* Animaciones */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradientes de Neón */
+.neon-gradient {
+  background: linear-gradient(45deg, 
+    rgba(var(--neon-primary), 0.1), 
+    rgba(var(--neon-secondary), 0.1)
+  );
+}
+
+/* Cards Mejoradas */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 0 20px rgba(var(--neon-primary), 0.3),
+    0 0 40px rgba(var(--neon-primary), 0.2);
+}
+
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}

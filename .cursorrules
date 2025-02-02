@@ -1,0 +1,13 @@
+# Descripción del proyecto
+
+Este proyecto es una landing page sobre mi perfil profesional a modo de presentación.
+
+Estarás usando NextJS 15, shadcn, Tailwind, Framer Motion, TypeScript, lucid icon.
+
+## Contexto
+Pienso ser el nuevo emperador con IA del mundo, por lo que mi carta de presentación debe demostrarlo. Te das cuenta que lo que usamos es la tec de punta, cierto? Por lo que el diseño debe ser a la altura! Usaremos la tech de vanguardia estilo startup de Sylicon Valley, con espaciales modernos, con alternativa a dark y light mode. 
+
+La landing page será simple y minimalista. Usará framer motion para animaciones, y scroll para desplazamiento. Tendrá las mejores animacions del momento! 
+
+Mira, anteriormente ya había creado algo similar, pero lo hice con css y js. Te daré imagenes de esta landing page durante el proceso,  a modo de referencia.
+
