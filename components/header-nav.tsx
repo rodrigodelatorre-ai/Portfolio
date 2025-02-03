@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 import { Instagram, Linkedin, Youtube, Mail } from "lucide-react"
-import { Button } from "./ui/button"
 
 export function HeaderNav() {
   return (

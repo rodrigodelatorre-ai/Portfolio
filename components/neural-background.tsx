@@ -26,11 +26,11 @@ export function NeuralBackground() {
 
     // Partículas
     const particles: Array<{x: number, y: number, vx: number, vy: number}> = []
-    const particleCount = 50 // Menos partículas pero más grandes
-    const connectionDistance = 300 // Mayor distancia de conexión
-    const particleRadius = theme === 'dark' ? 3 : 4 // Partículas más grandes
-    const cursorRadius = 350 // Mayor área de influencia del cursor
-    const cursorStrength = 0.0005 // Mayor fuerza de atracción
+    const particleCount = 50
+    const connectionDistance = 300
+    const particleRadius = theme === 'dark' ? 3 : 4
+    const cursorRadius = 350
+    const cursorStrength = 0.0005
 
     // Color neón azul con opacidad ajustada según el tema
     const neonBlue = theme === 'dark' ? '0, 242, 255' : '0, 162, 255'
@@ -48,6 +48,8 @@ export function NeuralBackground() {
     }
 
     // Animación
+    let animationFrameId: number
+
     function animate() {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -104,7 +106,7 @@ export function NeuralBackground() {
         })
       })
 
-      requestAnimationFrame(animate)
+      animationFrameId = requestAnimationFrame(animate)
     }
 
     // Manejar movimiento del cursor
@@ -118,8 +120,11 @@ export function NeuralBackground() {
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+      }
     }
-  }, [theme])
+  }, [theme, mousePosition])
 
   return (
     <canvas
