@@ -6,17 +6,26 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rodrigo De La Torre | AI Developer",
-  description: "Desarrollador de IA y Creador de Contenido | Construyendo el futuro de LATAM con IA",
+  title: "Rodrigo De La Torre - AI Developer",
+  description: "AI Developer & Content Creator",
+  icons: {
+    icon: [
+      {
+        url: "/images/Rodrigodelatorre.webp",
+        href: "/images/Rodrigodelatorre.webp",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head />
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

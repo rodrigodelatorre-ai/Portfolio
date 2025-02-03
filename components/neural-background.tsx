@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useState, useRef } from 'react'
+import { useTheme } from 'next-themes'
 
 export function NeuralBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const { theme } = useTheme()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -17,21 +19,23 @@ export function NeuralBackground() {
     const handleResize = () => {
       if (!canvas) return
       canvas.width = window.innerWidth
-      canvas.height = window.innerHeight * 2 // Duplicamos la altura para el scroll
+      canvas.height = window.innerHeight * 2
     }
     handleResize()
     window.addEventListener('resize', handleResize)
 
     // Partículas
     const particles: Array<{x: number, y: number, vx: number, vy: number}> = []
-    const particleCount = 100 // Aumentamos el número de partículas
-    const connectionDistance = 150
-    const particleRadius = 1
-    const cursorRadius = 200
-    const cursorStrength = 0.0002
+    const particleCount = 50 // Menos partículas pero más grandes
+    const connectionDistance = 300 // Mayor distancia de conexión
+    const particleRadius = theme === 'dark' ? 3 : 4 // Partículas más grandes
+    const cursorRadius = 350 // Mayor área de influencia del cursor
+    const cursorStrength = 0.0005 // Mayor fuerza de atracción
 
-    // Color neón azul
-    const neonBlue = '0, 242, 255'
+    // Color neón azul con opacidad ajustada según el tema
+    const neonBlue = theme === 'dark' ? '0, 242, 255' : '0, 162, 255'
+    const particleOpacity = theme === 'dark' ? 1 : 0.6
+    const lineOpacity = theme === 'dark' ? 0.4 : 0.5
 
     // Inicializar partículas
     for (let i = 0; i < particleCount; i++) {
@@ -68,11 +72,14 @@ export function NeuralBackground() {
           particle.vy += dy * force
         }
 
-        // Dibujar partícula
+        // Dibujar partícula con glow
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particleRadius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${neonBlue}, 0.8)`
+        ctx.fillStyle = `rgba(${neonBlue}, ${particleOpacity})`
+        ctx.shadowColor = `rgba(${neonBlue}, 1)`
+        ctx.shadowBlur = 15
         ctx.fill()
+        ctx.shadowBlur = 0
       })
 
       // Dibujar conexiones
@@ -87,9 +94,12 @@ export function NeuralBackground() {
             ctx.beginPath()
             ctx.moveTo(p1.x, p1.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(${neonBlue}, ${0.2 * (1 - distance / connectionDistance)})`
-            ctx.lineWidth = 1
+            ctx.strokeStyle = `rgba(${neonBlue}, ${lineOpacity * (1 - distance / connectionDistance)})`
+            ctx.lineWidth = theme === 'dark' ? 2 : 2.5
+            ctx.shadowColor = `rgba(${neonBlue}, 0.5)`
+            ctx.shadowBlur = 10
             ctx.stroke()
+            ctx.shadowBlur = 0
           }
         })
       })
@@ -109,12 +119,13 @@ export function NeuralBackground() {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [theme])
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
+      style={{ opacity: theme === 'dark' ? 0.5 : 0.3 }}
     />
   )
 } 

@@ -1,22 +1,35 @@
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils"
+import { useTheme } from "next-themes"
 
 interface NeonTitleProps {
   text: string;
   className?: string;
 }
 
-export function NeonTitle({ text, className = "" }: NeonTitleProps) {
+export function NeonTitle({ text, className }: NeonTitleProps) {
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`relative ${className}`}
+    <h1 
+      className={cn(
+        "text-4xl lg:text-5xl font-bold relative",
+        "animate-glow",
+        className
+      )}
     >
-      <div className="absolute inset-0 blur-lg opacity-50 bg-accent/50" />
-      <h1 className="relative text-4xl md:text-6xl font-bold neon-text bg-clip-text text-transparent bg-gradient-to-r from-[#00F2FF] to-[#FF00E5]">
+      <span className="absolute inset-0 text-[#00F2FF]" style={{
+        textShadow: isDark 
+          ? "0 0 10px rgba(0, 242, 255, 0.7), 0 0 20px rgba(0, 242, 255, 0.5)"
+          : "0 0 10px rgba(0, 162, 255, 0.9), 0 0 20px rgba(0, 162, 255, 0.7)"
+      }}>
         {text}
-      </h1>
-    </motion.div>
+      </span>
+      <span className="relative text-white" style={{
+        opacity: isDark ? 0.7 : 0.9
+      }}>
+        {text}
+      </span>
+    </h1>
   );
 } 

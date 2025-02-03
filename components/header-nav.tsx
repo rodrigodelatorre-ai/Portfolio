@@ -1,46 +1,68 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ThemeToggle } from "./theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
-import { InstagramIcon, LinkedinIcon, YoutubeIcon, MailIcon } from "lucide-react"
+import { Instagram, Linkedin, Youtube, Mail } from "lucide-react"
 import { Button } from "./ui/button"
 
 export function HeaderNav() {
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="header-nav"
-    >
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <div className="w-10">
-          <ThemeToggle />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16 relative">
+          {/* Botón de tema */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="neon-border rounded-full p-1"
+          >
+            <ThemeToggle />
+          </motion.div>
+
+          {/* Iconos centrados */}
+          <div className="flex-1 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex gap-6"
+            >
+              <Link
+                href="mailto:rodrigodelatorreai@gmail.com"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
+              >
+                <Mail className="w-6 h-6 text-[#00F2FF]" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/rodrigodelatorre_ai/"
+                target="_blank"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
+              >
+                <Instagram className="w-6 h-6 text-[#00F2FF]" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/rodrigo-de-la-torre-ai"
+                target="_blank"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
+              >
+                <Linkedin className="w-6 h-6 text-[#00F2FF]" />
+              </Link>
+              <Link
+                href="https://youtube.com/@RodrigoDeLaTorre-IA"
+                target="_blank"
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
+              >
+                <Youtube className="w-6 h-6 text-[#00F2FF]" />
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Espacio para mantener el balance */}
+          <div className="w-10"></div>
         </div>
-        <div className="flex items-center justify-center space-x-4 flex-1">
-          <Button variant="ghost" size="lg" className="neon-border w-12 h-12" asChild>
-            <Link href="mailto:rodrigodelatorreai@gmail.com" target="_blank">
-              <MailIcon className="h-6 w-6" />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="lg" className="neon-border w-12 h-12" asChild>
-            <Link href="https://www.instagram.com/rodrigodelatorre_ai/" target="_blank">
-              <InstagramIcon className="h-6 w-6" />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="lg" className="neon-border w-12 h-12" asChild>
-            <Link href="https://www.linkedin.com/in/rodrigo-de-la-torre-ai/" target="_blank">
-              <LinkedinIcon className="h-6 w-6" />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="lg" className="neon-border w-12 h-12" asChild>
-            <Link href="https://youtube.com/@RodrigoDeLaTorre-IA" target="_blank">
-              <YoutubeIcon className="h-6 w-6" />
-            </Link>
-          </Button>
-        </div>
-        <div className="w-10" /> {/* Espacio para mantener el centrado */}
       </div>
-    </motion.header>
+    </header>
   )
 } 
