@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
 
 export function NeuralBackground() {
@@ -35,7 +35,6 @@ export function NeuralBackground() {
     const connectionDistance = 300
     const particleRadius = theme === 'dark' ? 3 : 4
     const baseSpeed = 0.15 // Reducida la velocidad base
-    const cursorRadius = 100 // Reducido el radio de influencia
     
     // Colores
     const neonBlue = theme === 'dark' ? '0, 242, 255' : '0, 162, 255'
