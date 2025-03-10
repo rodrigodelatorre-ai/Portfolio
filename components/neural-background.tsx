@@ -14,8 +14,14 @@ export function NeuralBackground() {
     vx: number,
     vy: number
   }>>([])
+  
+  // Detector de dispositivo móvil
+  const isMobileRef = useRef(false)
 
   useEffect(() => {
+    // Detectar si es dispositivo móvil
+    isMobileRef.current = window.innerWidth < 768
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -27,14 +33,18 @@ export function NeuralBackground() {
       if (!canvas) return
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight * 2
+      
+      // Actualizar detección de dispositivo móvil
+      isMobileRef.current = window.innerWidth < 768
+      
       initParticles() // Reinicializar partículas cuando cambie el tamaño
     }
 
     // Configuración
-    const particleCount = 50
-    const connectionDistance = 300
+    const particleCount = isMobileRef.current ? 30 : 50
+    const connectionDistance = isMobileRef.current ? 200 : 300
     const particleRadius = theme === 'dark' ? 3 : 4
-    const baseSpeed = 0.15 // Reducida la velocidad base
+    const baseSpeed = 0.12 // Reducida la velocidad aún más
     
     // Colores
     const neonBlue = theme === 'dark' ? '0, 242, 255' : '0, 162, 255'
@@ -55,9 +65,15 @@ export function NeuralBackground() {
       })
     }
 
+    // Optimización de rendimiento: dibujar conexiones con menos frecuencia
+    let frameCount = 0
+    
     function animate() {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      frameCount++
+      const drawConnections = frameCount % (isMobileRef.current ? 3 : 2) === 0
       
       particlesRef.current.forEach(particle => {
         // Actualizar posición
@@ -80,37 +96,52 @@ export function NeuralBackground() {
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particleRadius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${neonBlue}, ${particleOpacity})`
-        ctx.shadowColor = `rgba(${neonBlue}, 1)`
-        ctx.shadowBlur = 15
+        
+        // Reducir sombras en móviles para mejor rendimiento
+        if (!isMobileRef.current) {
+          ctx.shadowColor = `rgba(${neonBlue}, 1)`
+          ctx.shadowBlur = 15
+        }
+        
         ctx.fill()
         ctx.shadowBlur = 0
       })
 
-      // Dibujar conexiones
-      particlesRef.current.forEach((p1, i) => {
-        particlesRef.current.slice(i + 1).forEach(p2 => {
-          const dx = p1.x - p2.x
-          const dy = p1.y - p2.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
+      // Dibujar conexiones solo en ciertos frames para optimizar
+      if (drawConnections) {
+        particlesRef.current.forEach((p1, i) => {
+          // Limitar número de conexiones para optimizar
+          const limit = isMobileRef.current ? 3 : 5
+          particlesRef.current.slice(i + 1, i + limit).forEach(p2 => {
+            const dx = p1.x - p2.x
+            const dy = p1.y - p2.y
+            const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < connectionDistance) {
-            ctx.beginPath()
-            ctx.moveTo(p1.x, p1.y)
-            ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(${neonBlue}, ${lineOpacity * (1 - distance / connectionDistance)})`
-            ctx.lineWidth = theme === 'dark' ? 2 : 2.5
-            ctx.shadowColor = `rgba(${neonBlue}, 0.5)`
-            ctx.shadowBlur = 10
-            ctx.stroke()
-            ctx.shadowBlur = 0
-          }
+            if (distance < connectionDistance) {
+              ctx.beginPath()
+              ctx.moveTo(p1.x, p1.y)
+              ctx.lineTo(p2.x, p2.y)
+              ctx.strokeStyle = `rgba(${neonBlue}, ${lineOpacity * (1 - distance / connectionDistance)})`
+              ctx.lineWidth = theme === 'dark' ? 2 : 2.5
+              
+              // Reducir sombras en móviles para mejor rendimiento
+              if (!isMobileRef.current) {
+                ctx.shadowColor = `rgba(${neonBlue}, 0.5)`
+                ctx.shadowBlur = 10
+              }
+              
+              ctx.stroke()
+              ctx.shadowBlur = 0
+            }
+          })
         })
-      })
+      }
 
       animationFrameIdRef.current = requestAnimationFrame(animate)
     }
 
     // Inicializar y comenzar animación
+    window.addEventListener('resize', handleResize)
     handleResize()
     animate()
 
