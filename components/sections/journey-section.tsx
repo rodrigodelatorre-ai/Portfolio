@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
-import { Briefcase, GraduationCap, Award, Star } from "lucide-react"
+import { Briefcase, GraduationCap, Star } from "lucide-react"
 import { useTheme } from "next-themes"
 
 // Datos de la trayectoria actualizados
