@@ -3,11 +3,8 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Instagram, Linkedin, Youtube, Mail, ChevronUp } from "lucide-react"
-import { useTheme } from "next-themes"
 
 export function Footer() {
-  const { theme } = useTheme()
-  
   const currentYear = new Date().getFullYear()
   
   const socialLinks = [
@@ -39,8 +36,8 @@ export function Footer() {
       links: [
         { name: "Inicio", href: "#top" },
         { name: "Sobre mí", href: "#about" },
-        { name: "Habilidades", href: "#skills" },
         { name: "Proyectos", href: "#projects" },
+        { name: "Habilidades", href: "#skills" },
         { name: "Trayectoria", href: "#journey" },
         { name: "Contacto", href: "#contact" },
       ]

@@ -9,11 +9,8 @@ import { ProjectsSection } from '@/components/sections/projects-section'
 import { JourneySection } from '@/components/sections/journey-section'
 import { ContactSection } from '@/components/sections/contact-section'
 import { Footer } from '@/components/footer'
-import { useTheme } from 'next-themes'
 
 export default function Home() {
-  const { theme } = useTheme()
-
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Fondo Neural */}
@@ -28,11 +25,11 @@ export default function Home() {
       {/* Sección Sobre Mí */}
       <AboutSection />
       
+      {/* Sección de Proyectos - Movida antes que Habilidades */}
+      <ProjectsSection />
+      
       {/* Sección de Habilidades */}
       <SkillsSection />
-      
-      {/* Sección de Proyectos */}
-      <ProjectsSection />
       
       {/* Sección de Trayectoria */}
       <JourneySection />

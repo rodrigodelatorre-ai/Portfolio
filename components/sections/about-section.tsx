@@ -4,11 +4,8 @@ import { motion } from "framer-motion"
 import { Terminal, Brain, Rocket, Briefcase } from "lucide-react"
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
-import { useTheme } from "next-themes"
 
 export function AboutSection() {
-  const { theme } = useTheme()
-  
   // Variantes para animaciones
   const containerVariants = {
     hidden: { opacity: 0 },

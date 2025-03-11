@@ -12,14 +12,15 @@ const projects = [
   {
     id: "cognitiveds",
     title: "CognitiveDS",
-    description: "Plataforma de soluciones empresariales basadas en IA y agentes autónomos.",
+    description: "Agencia de IA especializada en desarrollo de soluciones personalizadas.",
     category: "IA & Desarrollo",
-    image: "/images/AlquimIA.webp", // Usar imagen temporal
-    details: "CognitiveDS es una startup especializada en la creación de soluciones de inteligencia artificial para empresas. Ofrece consultoría, agentes autónomos y soluciones personalizadas para transformar negocios.",
+    image: "/images/Cognitiveds.webp",
+    details: "CognitiveDS es una agencia especializada en la creación de soluciones de inteligencia artificial para empresas. Ofrece consultoría, agentes autónomos y soluciones personalizadas para transformar negocios.",
     tech: ["Next.js", "TypeScript", "OpenAI", "LangChain", "Serverless"],
     links: [
       { type: "site", url: "https://www.cognitiveds.ai/" },
-    ]
+    ],
+    preview: true
   },
   {
     id: "alquimia",
@@ -38,25 +39,14 @@ const projects = [
     title: "Canal de YouTube",
     description: "Contenido educativo sobre inteligencia artificial, tecnología y desarrollo.",
     category: "Educación",
-    image: "/images/AlquimIA.webp", // Usar imagen temporal
+    image: "/images/AlquimIA.webp",
     details: "Canal de YouTube especializado en tutoriales, guías y análisis sobre inteligencia artificial, programación y últimas tendencias tecnológicas.",
     tech: ["Educación", "Tutoriales", "IA", "Tecnología"],
     links: [
       { type: "youtube", url: "https://youtube.com/@RodrigoDeLaTorre-IA" },
-    ]
-  },
-  {
-    id: "project4",
-    title: "Asistente IA Personalizado",
-    description: "Framework para la creación de asistentes IA personalizados con memoria y contexto.",
-    category: "Desarrollo",
-    image: "/images/AlquimIA.webp", // Usar imagen temporal
-    details: "Sistema modular para la implementación de asistentes de IA que mantienen contexto, tienen memoria a largo plazo y se integran con herramientas externas.",
-    tech: ["Python", "FastAPI", "Redis", "LangChain", "Vector Databases"],
-    links: [
-      { type: "github", url: "https://github.com" },
-    ]
-  },
+    ],
+    preview: true
+  }
 ]
 
 export function ProjectsSection() {
@@ -101,14 +91,45 @@ export function ProjectsSection() {
                 {/* Overlay del proyecto */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10 opacity-70 group-hover:opacity-40 transition-opacity" />
                 
-                {/* Imagen */}
+                {/* Imagen o Preview */}
                 <div className="w-full h-48 relative">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105 duration-700"
-                  />
+                  {project.preview ? (
+                    project.id === "cognitiveds" ? (
+                      <iframe
+                        src="https://www.cognitiveds.ai"
+                        className="w-full h-full border-0"
+                        style={{
+                          pointerEvents: 'none',
+                          width: '100%',
+                          height: '200%',
+                          maxWidth: 'unset',
+                          transform: 'scale(0.5)',
+                          transformOrigin: 'top center',
+                        }}
+                      />
+                    ) : project.id === "youtube" ? (
+                      <iframe
+                        src="https://www.youtube.com/embed/videoseries?list=UUhDV_UXl7j0QDPIGSxMIEfA"
+                        className="absolute inset-0 w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform group-hover:scale-105 duration-700"
+                      />
+                    )
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105 duration-700"
+                    />
+                  )}
                 </div>
                 
                 {/* Contenido */}
@@ -186,12 +207,43 @@ export function ProjectsSection() {
                     
                     {/* Cabecera con imagen */}
                     <div className="w-full h-64 relative">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                      />
+                      {project.preview ? (
+                        project.id === "cognitiveds" ? (
+                          <iframe
+                            src="https://www.cognitiveds.ai"
+                            className="w-full h-full border-0"
+                            style={{
+                              pointerEvents: 'none',
+                              width: '100%',
+                              height: '200%',
+                              maxWidth: 'unset',
+                              transform: 'scale(0.5)',
+                              transformOrigin: 'top center',
+                            }}
+                          />
+                        ) : project.id === "youtube" ? (
+                          <iframe
+                            src="https://www.youtube.com/embed/videoseries?list=UUhDV_UXl7j0QDPIGSxMIEfA"
+                            className="absolute inset-0 w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover"
+                          />
+                        )
+                      ) : (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent"></div>
                       
                       <div className="absolute bottom-0 left-0 p-6">

@@ -8,16 +8,29 @@ import { useTheme } from "next-themes"
 // Categorías de habilidades actualizadas
 const skillCategories = [
   {
+    id: "automation",
+    name: "Automatizaciones IA",
+    color: "from-emerald-500 to-green-500",
+    skills: [
+      { name: "n8n", level: 95 },
+      { name: "Make (Integromat)", level: 85 },
+      { name: "Sistemas multiagentes 'Low code'", level: 85 },
+      { name: "Power Automate", level: 75 },
+      { name: "Scripts de Automatización", level: 85 },
+      { name: "Webhooks & APIs", level: 90 },
+    ]
+  },
+  {
     id: "ai",
     name: "IA & ML",
     color: "from-cyan-500 to-blue-500",
     skills: [
-      { name: "LangChain", level: 95 },
-      { name: "Agentes IA", level: 90 },
+      { name: "GPTs", level: 95 },
+      { name: "Content Generation", level: 90 },
       { name: "Prompt Engineering", level: 95 },
-      { name: "OpenAI API", level: 90 },
+      { name: "LLM OpenSource APIs", level: 90 },
       { name: "HuggingFace", level: 85 },
-      { name: "TensorFlow", level: 80 },
+      { name: "Agentes IA", level: 90 },
     ]
   },
   {
@@ -31,19 +44,6 @@ const skillCategories = [
       { name: "Python", level: 90 },
       { name: "API REST/GraphQL", level: 85 },
       { name: "Bases de Datos", level: 85 },
-    ]
-  },
-  {
-    id: "automation",
-    name: "Automatizaciones IA",
-    color: "from-emerald-500 to-green-500",
-    skills: [
-      { name: "Make (Integromat)", level: 90 },
-      { name: "n8n", level: 85 },
-      { name: "Zapier", level: 80 },
-      { name: "Power Automate", level: 75 },
-      { name: "Scripts de Automatización", level: 85 },
-      { name: "Webhooks & APIs", level: 90 },
     ]
   }
 ]

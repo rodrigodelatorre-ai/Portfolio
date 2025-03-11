@@ -122,7 +122,7 @@ export function ContactSection() {
             >
               <Card className="p-6 neon-border bg-gradient-to-br from-background to-background/70">
                 <p className="text-center font-medium">
-                  "Me apasiona combinar la tecnología con la creatividad para construir un futuro mejor."
+                  &ldquo;Me apasiona combinar la tecnología con la creatividad para construir un futuro mejor.&rdquo;
                 </p>
               </Card>
             </motion.div>

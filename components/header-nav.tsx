@@ -82,8 +82,8 @@ export function HeaderNav() {
             >
               {[
                 { href: "#about", label: "Sobre mí", icon: User },
-                { href: "#skills", label: "Habilidades", icon: Code },
                 { href: "#projects", label: "Proyectos", icon: Briefcase },
+                { href: "#skills", label: "Habilidades", icon: Code },
                 { href: "#journey", label: "Trayectoria", icon: GraduationCap },
                 { href: "#contact", label: "Contacto", icon: User },
               ].map((item) => (
@@ -135,8 +135,8 @@ export function HeaderNav() {
               <div className="grid grid-cols-1 gap-2">
                 {[
                   { href: "#about", label: "Sobre mí", icon: User },
-                  { href: "#skills", label: "Habilidades", icon: Code },
                   { href: "#projects", label: "Proyectos", icon: Briefcase },
+                  { href: "#skills", label: "Habilidades", icon: Code },
                   { href: "#journey", label: "Trayectoria", icon: GraduationCap },
                   { href: "#contact", label: "Contacto", icon: User },
                 ].map((item, i) => (
