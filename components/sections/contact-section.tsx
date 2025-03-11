@@ -56,36 +56,34 @@ export function ContactSection() {
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="flex flex-col gap-10 max-w-4xl mx-auto">
           {/* Calendario de Cal.com */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="h-full"
           >
-            <div className="w-full h-full neon-border-full">
+            <div className="w-full neon-border-full">
               <CalBooking />
             </div>
           </motion.div>
           
           {/* Información de contacto */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-full"
           >
-            <Card className="p-8 neon-border-full h-full flex flex-col">
+            <Card className="p-8 neon-border-full">
               <h3 className="text-xl font-bold mb-6 text-white">Conectemos</h3>
               <p className="text-white text-base opacity-90 mb-6">
                 Estoy siempre abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. 
                 No dudes en contactarme a través de cualquiera de estos canales.
               </p>
               
-              <div className="space-y-4 flex-grow">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {socialLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -97,7 +95,7 @@ export function ContactSection() {
                     <Link
                       href={link.href}
                       target={link.href.startsWith('mailto') ? undefined : "_blank"}
-                      className="flex items-center gap-4 p-4 rounded-lg border border-border hover:bg-background/50 transition-colors"
+                      className="flex items-center gap-4 p-4 rounded-lg border border-border hover:bg-background/50 transition-colors h-full"
                     >
                       <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${link.color} flex items-center justify-center`}>
                         <link.icon className="w-5 h-5 text-white" />
