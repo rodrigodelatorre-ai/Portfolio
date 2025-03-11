@@ -74,15 +74,15 @@ export function AboutSection() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-white">
               Construyendo el futuro con inteligencia artificial
             </h3>
             
-            <p className="text-muted-foreground mb-4">
+            <p className="text-white text-base mb-4 opacity-90">
               Soy Rodrigo De La Torre, apasionado por la IA y las tecnologías emergentes. Mi misión es democratizar el acceso a la inteligencia artificial, permitiendo a empresas y personas aprovechar todo su potencial.
             </p>
             
-            <p className="text-muted-foreground">
+            <p className="text-white text-base opacity-90">
               A través de mis proyectos y contenido educativo, busco inspirar y capacitar a otros para que se unan a la revolución tecnológica que está transformando el mundo.
             </p>
             
@@ -97,7 +97,7 @@ export function AboutSection() {
               {[
                 { icon: Terminal, title: "Desarrollo IA", color: "from-cyan-500 to-blue-500" },
                 { icon: Brain, title: "Agentes IA", color: "from-pink-500 to-purple-500" },
-                { icon: Rocket, title: "Innovación", color: "from-green-500 to-emerald-500" },
+                { icon: Rocket, title: "Automatizaciones IA", color: "from-green-500 to-emerald-500" },
                 { icon: Briefcase, title: "Consultoría", color: "from-amber-500 to-orange-500" }
               ].map((item, i) => (
                 <motion.div key={i} variants={itemVariants}>

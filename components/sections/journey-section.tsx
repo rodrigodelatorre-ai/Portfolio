@@ -6,62 +6,53 @@ import { Card } from "@/components/ui/card"
 import { Briefcase, GraduationCap, Award, Star } from "lucide-react"
 import { useTheme } from "next-themes"
 
-// Datos de la trayectoria
+// Datos de la trayectoria actualizados
 const journeyItems = [
   {
     id: "journey1",
     year: "2023 - Presente",
-    title: "Fundador & CEO",
-    organization: "CognitiveDS",
-    description: "Fundador de una startup especializada en soluciones de IA y agentes autónomos para empresas.",
+    title: "Founder & CEO",
+    organization: "CognitiveDS & AlquimIA Elite",
+    description: "Fundador y director ejecutivo de dos proyectos de impacto: CognitiveDS, una agencia especializada en soluciones de IA para empresas, y AlquimIA Elite, comunidad exclusiva para profesionales y entusiastas de la inteligencia artificial.",
     icon: Briefcase,
     type: "work",
   },
   {
     id: "journey2",
-    year: "2022 - Presente",
+    year: "2024 - Presente",
     title: "Creador de Contenido",
     organization: "YouTube",
-    description: "Canal educativo sobre inteligencia artificial, con tutoriales y contenido avanzado sobre las últimas tecnologías en IA.",
+    description: "Desarrollo y producción de contenido educativo sobre inteligencia artificial, automatización y tecnologías emergentes. Tutoriales, análisis y guías prácticas para ayudar a otros a entender y aprovechar el potencial de las nuevas tecnologías.",
     icon: Star,
     type: "content",
   },
   {
     id: "journey3",
-    year: "2021 - Presente",
-    title: "Fundador",
-    organization: "AlquimIA Elite",
-    description: "Creación y liderazgo de una comunidad exclusiva para profesionales y entusiastas de la IA.",
-    icon: Award,
-    type: "community",
+    year: "2023 - Presente",
+    title: "AI Developer",
+    organization: "Proyectos Independientes",
+    description: "Desarrollo de soluciones avanzadas basadas en inteligencia artificial, incluyendo sistemas multiagente, procesamiento de lenguaje natural, y automatizaciones utilizando las últimas tecnologías y frameworks de IA.",
+    icon: Briefcase,
+    type: "work",
   },
   {
     id: "journey4",
-    year: "2018 - 2022",
-    title: "Sr. AI Developer",
-    organization: "Tech Company",
-    description: "Desarrollo de soluciones de IA para empresas Fortune 500, implementando sistemas de automatización y análisis predictivo.",
+    year: "2022 - 2023",
+    title: "IoT & Robots Developer",
+    organization: "Sector Tecnológico",
+    description: "Diseño y desarrollo de soluciones tecnológicas que combinan hardware y software para la automatización de procesos industriales. Implementación de sistemas IoT para monitoreo en tiempo real y control de dispositivos conectados.",
     icon: Briefcase,
     type: "work",
   },
   {
     id: "journey5",
-    year: "2016 - 2018",
-    title: "ML Engineer",
-    organization: "AI Lab",
-    description: "Investigación y desarrollo de modelos de machine learning para soluciones empresariales.",
-    icon: Briefcase,
-    type: "work",
-  },
-  {
-    id: "journey6",
-    year: "2014 - 2016",
-    title: "Master en IA",
+    year: "2022",
+    title: "Ingeniería Mecatrónica",
     organization: "Universidad Tecnológica",
-    description: "Especialización en inteligencia artificial, machine learning y procesamiento de lenguaje natural.",
+    description: "Formación académica en ingeniería mecatrónica, combinando elementos de mecánica, electrónica, informática y control. Desarrollo de proyectos multidisciplinares que sentaron las bases para mi posterior especialización en tecnologías avanzadas.",
     icon: GraduationCap,
     type: "education",
-  },
+  }
 ]
 
 export function JourneySection() {

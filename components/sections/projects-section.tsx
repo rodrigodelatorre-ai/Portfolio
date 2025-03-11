@@ -29,7 +29,7 @@ const projects = [
     category: "Comunidad",
     image: "/images/AlquimIA.webp",
     details: "AlquimIA Elite es una comunidad exclusiva donde expertos y entusiastas de la IA comparten conocimientos, recursos y oportunidades para crecer profesionalmente en el sector.",
-    tech: ["Next.js", "Skool", "Discord", "Community Building"],
+    tech: ["Next.js", "Skool", "n8n", "Cursor"],
     links: [
       { type: "site", url: "https://www.skool.com/alquimia-elite/about" },
     ]
@@ -43,7 +43,7 @@ const projects = [
     details: "Canal de YouTube especializado en tutoriales, guías y análisis sobre inteligencia artificial, programación y últimas tendencias tecnológicas.",
     tech: ["Educación", "Tutoriales", "IA", "Tecnología"],
     links: [
-      { type: "youtube", url: "https://youtube.com/@RodrigoDeLaTorre-IA" },
+      { type: "youtube", url: "https://www.youtube.com/channel/UCWmREz2V0nyIQcE7EQCvevQ" },
     ],
     preview: true
   }
@@ -101,15 +101,15 @@ export function ProjectsSection() {
                         style={{
                           pointerEvents: 'none',
                           width: '100%',
-                          height: '200%',
+                          height: '100%',
                           maxWidth: 'unset',
-                          transform: 'scale(0.5)',
+                          transform: 'scale(1)',
                           transformOrigin: 'top center',
                         }}
                       />
                     ) : project.id === "youtube" ? (
                       <iframe
-                        src="https://www.youtube.com/embed/videoseries?list=UUhDV_UXl7j0QDPIGSxMIEfA"
+                        src="https://www.youtube.com/embed?listType=user_uploads&list=UCWmREz2V0nyIQcE7EQCvevQ"
                         className="absolute inset-0 w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -215,15 +215,15 @@ export function ProjectsSection() {
                             style={{
                               pointerEvents: 'none',
                               width: '100%',
-                              height: '200%',
+                              height: '100%',
                               maxWidth: 'unset',
-                              transform: 'scale(0.5)',
+                              transform: 'scale(1)',
                               transformOrigin: 'top center',
                             }}
                           />
                         ) : project.id === "youtube" ? (
                           <iframe
-                            src="https://www.youtube.com/embed/videoseries?list=UUhDV_UXl7j0QDPIGSxMIEfA"
+                            src="https://www.youtube.com/embed?listType=user_uploads&list=UCWmREz2V0nyIQcE7EQCvevQ"
                             className="absolute inset-0 w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
