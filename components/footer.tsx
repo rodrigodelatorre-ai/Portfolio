@@ -135,7 +135,7 @@ export function Footer() {
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Política de Privacidad
+              Política de Privacidad.
             </Link>
             
             <div className="text-muted-foreground">•</div>
@@ -144,7 +144,7 @@ export function Footer() {
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Términos de Servicio
+              Terminos de Servicio.
             </Link>
           </div>
         </div>
