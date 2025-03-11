@@ -29,7 +29,7 @@ export function ContactSection() {
     { 
       name: "YouTube", 
       icon: Youtube, 
-      href: "https://youtube.com/@RodrigoDeLaTorre-IA",
+      href: "https://www.youtube.com/channel/UCWmREz2V0nyIQcE7EQCvevQ",
       color: "from-red-500 to-rose-600" 
     },
   ]
@@ -51,7 +51,7 @@ export function ContactSection() {
             <span className="relative z-10">Contacto</span>
             <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] rounded-full"></span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-white text-base opacity-90 max-w-2xl mx-auto">
             ¿Interesado en colaborar o tienes alguna pregunta? ¡Contáctame!
           </p>
         </motion.div>
@@ -63,6 +63,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
+            className="h-full"
           >
             <CalBooking />
           </motion.div>
@@ -73,16 +74,16 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="h-full"
           >
-            <Card className="p-8 neon-border">
-              <h3 className="text-xl font-bold mb-6">Conectemos</h3>
-              <p className="text-muted-foreground mb-6">
+            <Card className="p-8 neon-border h-full flex flex-col">
+              <h3 className="text-xl font-bold mb-6 text-white">Conectemos</h3>
+              <p className="text-white text-base opacity-90 mb-6">
                 Estoy siempre abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. 
                 No dudes en contactarme a través de cualquiera de estos canales.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-4 flex-grow">
                 {socialLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -100,8 +101,8 @@ export function ContactSection() {
                         <link.icon className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-medium">{link.name}</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-medium text-white">{link.name}</h4>
+                        <p className="text-sm text-white opacity-80">
                           {link.name === "Email" 
                             ? "rodrigodelatorreai@gmail.com" 
                             : `@rodrigodelatorre_ai`}
@@ -112,20 +113,6 @@ export function ContactSection() {
                 ))}
               </div>
             </Card>
-            
-            {/* Mensaje adicional */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <Card className="p-6 neon-border bg-gradient-to-br from-background to-background/70">
-                <p className="text-center font-medium">
-                  &ldquo;Me apasiona combinar la tecnología con la creatividad para construir un futuro mejor.&rdquo;
-                </p>
-              </Card>
-            </motion.div>
           </motion.div>
         </div>
       </div>

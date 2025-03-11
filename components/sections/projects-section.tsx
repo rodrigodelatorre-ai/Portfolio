@@ -109,7 +109,7 @@ export function ProjectsSection() {
                       />
                     ) : project.id === "youtube" ? (
                       <iframe
-                        src="https://www.youtube.com/embed?listType=user_uploads&list=UCWmREz2V0nyIQcE7EQCvevQ"
+                        src="https://www.youtube.com/embed?channel=UCWmREz2V0nyIQcE7EQCvevQ"
                         className="absolute inset-0 w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -194,7 +194,9 @@ export function ProjectsSection() {
             >
               {(() => {
                 const project = projects.find(p => p.id === activeProject)
-                if (!project) return null
+                if (!project) return null;
+                
+                const linkUrl = project.links[0]?.url || "#";
                 
                 return (
                   <Card className="p-0 overflow-hidden relative">
@@ -205,29 +207,38 @@ export function ProjectsSection() {
                       ✕
                     </button>
                     
-                    {/* Cabecera con imagen */}
-                    <div className="w-full h-64 relative">
-                      {project.preview ? (
-                        project.id === "cognitiveds" ? (
-                          <iframe
-                            src="https://www.cognitiveds.ai"
-                            className="w-full h-full border-0"
-                            style={{
-                              pointerEvents: 'none',
-                              width: '100%',
-                              height: '100%',
-                              maxWidth: 'unset',
-                              transform: 'scale(1)',
-                              transformOrigin: 'top center',
-                            }}
-                          />
-                        ) : project.id === "youtube" ? (
-                          <iframe
-                            src="https://www.youtube.com/embed?listType=user_uploads&list=UCWmREz2V0nyIQcE7EQCvevQ"
-                            className="absolute inset-0 w-full h-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
+                    {/* Cabecera con imagen - Ahora es clicable */}
+                    <Link href={linkUrl} target="_blank" className="block relative w-full h-64 group/image">
+                      <div className="w-full h-full relative overflow-hidden">
+                        {project.preview ? (
+                          project.id === "cognitiveds" ? (
+                            <iframe
+                              src="https://www.cognitiveds.ai"
+                              className="w-full h-full border-0"
+                              style={{
+                                pointerEvents: 'none',
+                                width: '100%',
+                                height: '100%',
+                                maxWidth: 'unset',
+                                transform: 'scale(1)',
+                                transformOrigin: 'top center',
+                              }}
+                            />
+                          ) : project.id === "youtube" ? (
+                            <iframe
+                              src="https://www.youtube.com/embed?channel=UCWmREz2V0nyIQcE7EQCvevQ"
+                              className="absolute inset-0 w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          ) : (
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-cover"
+                            />
+                          )
                         ) : (
                           <Image
                             src={project.image}
@@ -235,16 +246,17 @@ export function ProjectsSection() {
                             fill
                             className="object-cover"
                           />
-                        )
-                      ) : (
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover"
-                        />
-                      )}
+                        )}
+                      </div>
+                      
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent"></div>
+                      
+                      {/* Overlay al pasar el ratón sobre la imagen */}
+                      <div className="absolute inset-0 bg-[#00F2FF]/20 opacity-0 group-hover/image:opacity-100 transition-opacity flex items-center justify-center">
+                        <div className="bg-background/80 backdrop-blur-sm rounded-full p-3 transform translate-y-4 group-hover/image:translate-y-0 transition-transform">
+                          <ExternalLink className="w-6 h-6 text-[#00F2FF]" />
+                        </div>
+                      </div>
                       
                       <div className="absolute bottom-0 left-0 p-6">
                         <div className="mb-2">
@@ -254,7 +266,7 @@ export function ProjectsSection() {
                         </div>
                         <h3 className="text-2xl md:text-3xl font-bold text-white">{project.title}</h3>
                       </div>
-                    </div>
+                    </Link>
                     
                     {/* Contenido */}
                     <div className="p-6">
