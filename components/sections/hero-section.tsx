@@ -14,32 +14,76 @@ export function HeroSection() {
     <section id="top" className="h-screen relative flex items-center">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Imagen de perfil - Visible solo en móvil */}
+          {/* Imagen de perfil - Ahora a la izquierda en desktop, visible también en móvil */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="md:hidden mx-auto w-48 h-48"
+            initial={{ opacity: 0, scale: 0.8, x: -50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="mx-auto md:mx-0 order-2 md:order-1"
           >
-            <div className="relative w-full h-full">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00F2FF] to-[#FF00E5] opacity-20 blur-xl animate-pulse"></div>
+            <div className="relative w-48 h-48 md:w-72 md:h-72 xl:w-96 xl:h-96">
+              {/* Blob animado detrás de la imagen */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00F2FF] to-[#FF00E5] opacity-20 blur-2xl animate-pulse"></div>
+              
+              {/* Elementos decorativos tecnológicos */}
+              <motion.div 
+                className="absolute -top-8 -right-8 w-16 h-16 opacity-30"
+                animate={{ 
+                  rotate: [0, 10, 0, -10, 0],
+                  scale: [1, 1.05, 1, 0.95, 1] 
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 8,
+                  ease: "easeInOut"
+                }}
+              >
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="50" stroke="#00F2FF" strokeWidth="2"/>
+                  <circle cx="100" cy="100" r="80" stroke="#00F2FF" strokeWidth="1" strokeDasharray="10 10"/>
+                  <circle cx="100" cy="100" r="30" stroke="#FF00E5" strokeWidth="3"/>
+                </svg>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -bottom-4 -left-12 w-24 h-24 opacity-30"
+                animate={{ 
+                  rotate: [0, -15, 0, 15, 0],
+                  y: [0, -5, 0, 5, 0]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 10,
+                  ease: "easeInOut"
+                }}
+              >
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="50" y="50" width="100" height="100" stroke="#00F2FF" strokeWidth="2" />
+                  <path d="M50 100H150" stroke="#FF00E5" strokeWidth="2" />
+                  <path d="M100 50V150" stroke="#FF00E5" strokeWidth="2" />
+                  <circle cx="100" cy="100" r="25" stroke="#00F2FF" strokeWidth="2" strokeDasharray="5 5"/>
+                </svg>
+              </motion.div>
+              
+              {/* Imagen principal */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#00F2FF] neon-border">
                 <Image
                   src="/images/Rodrigodelatorre.webp"
                   alt="Rodrigo De La Torre"
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>
           </motion.div>
           
-          {/* Texto principal */}
+          {/* Texto principal - Ahora a la derecha */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-center md:text-left"
+            className="text-center md:text-left order-1 md:order-2"
           >
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -100,84 +144,25 @@ export function HeroSection() {
               transition={{ delay: 1, duration: 0.5 }}
               className="flex flex-wrap gap-4 justify-center md:justify-start"
             >
+              {/* Cambiando el orden de los botones y aplicando efecto neón al botón de Contáctame */}
+              <Link 
+                href="#contact"
+                className="px-6 py-3 rounded-full bg-background border border-[#00F2FF] text-[#00F2FF] font-medium transition-all relative neon-text"
+                style={{
+                  textShadow: "0 0 5px #00F2FF, 0 0 10px #00F2FF",
+                }}
+              >
+                <span className="relative z-10">Contáctame</span>
+                <div className="absolute inset-0 rounded-full opacity-20 blur-sm bg-[#00F2FF]"></div>
+              </Link>
+              
               <Link 
                 href="#projects"
                 className="px-6 py-3 rounded-full bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] text-white font-medium hover:shadow-lg hover:shadow-[#00F2FF]/20 transition-all"
               >
                 Ver proyectos
               </Link>
-              
-              <Link 
-                href="#contact"
-                className="px-6 py-3 rounded-full bg-background border border-[#00F2FF] text-[#00F2FF] font-medium hover:bg-[#00F2FF]/10 transition-all"
-              >
-                Contáctame
-              </Link>
             </motion.div>
-          </motion.div>
-          
-          {/* Imagen de perfil animada */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="hidden md:block"
-          >
-            <div className="relative mx-auto w-72 h-72 xl:w-96 xl:h-96">
-              {/* Blob animado detrás de la imagen */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00F2FF] to-[#FF00E5] opacity-20 blur-2xl animate-pulse"></div>
-              
-              {/* Elementos decorativos tecnológicos */}
-              <motion.div 
-                className="absolute -top-8 -right-8 w-16 h-16 opacity-30"
-                animate={{ 
-                  rotate: [0, 10, 0, -10, 0],
-                  scale: [1, 1.05, 1, 0.95, 1] 
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 8,
-                  ease: "easeInOut"
-                }}
-              >
-                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="100" cy="100" r="50" stroke="#00F2FF" strokeWidth="2"/>
-                  <circle cx="100" cy="100" r="80" stroke="#00F2FF" strokeWidth="1" strokeDasharray="10 10"/>
-                  <circle cx="100" cy="100" r="30" stroke="#FF00E5" strokeWidth="3"/>
-                </svg>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -bottom-4 -left-12 w-24 h-24 opacity-30"
-                animate={{ 
-                  rotate: [0, -15, 0, 15, 0],
-                  y: [0, -5, 0, 5, 0]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 10,
-                  ease: "easeInOut"
-                }}
-              >
-                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="50" y="50" width="100" height="100" stroke="#00F2FF" strokeWidth="2" />
-                  <path d="M50 100H150" stroke="#FF00E5" strokeWidth="2" />
-                  <path d="M100 50V150" stroke="#FF00E5" strokeWidth="2" />
-                  <circle cx="100" cy="100" r="25" stroke="#00F2FF" strokeWidth="2" strokeDasharray="5 5"/>
-                </svg>
-              </motion.div>
-              
-              {/* Imagen principal */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#00F2FF] neon-border">
-                <Image
-                  src="/images/Rodrigodelatorre.webp"
-                  alt="Rodrigo De La Torre"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

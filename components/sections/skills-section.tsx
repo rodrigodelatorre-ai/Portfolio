@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { useTheme } from "next-themes"
 
-// Categorías de habilidades
+// Categorías de habilidades actualizadas
 const skillCategories = [
   {
     id: "ai",
@@ -21,42 +21,29 @@ const skillCategories = [
     ]
   },
   {
-    id: "frontend",
-    name: "Frontend",
+    id: "dev",
+    name: "Desarrollo de Código",
     color: "from-purple-500 to-pink-500",
     skills: [
       { name: "React/Next.js", level: 90 },
       { name: "TypeScript", level: 85 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "Framer Motion", level: 85 },
-      { name: "UI/UX Design", level: 80 },
-      { name: "ShadcnUI", level: 85 },
-    ]
-  },
-  {
-    id: "backend",
-    name: "Backend",
-    color: "from-green-500 to-emerald-500",
-    skills: [
       { name: "Node.js", level: 85 },
       { name: "Python", level: 90 },
       { name: "API REST/GraphQL", level: 85 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "MongoDB", level: 85 },
-      { name: "Serverless", level: 90 },
+      { name: "Bases de Datos", level: 85 },
     ]
   },
   {
-    id: "devops",
-    name: "DevOps & Cloud",
-    color: "from-orange-500 to-amber-500",
+    id: "automation",
+    name: "Automatizaciones IA",
+    color: "from-emerald-500 to-green-500",
     skills: [
-      { name: "AWS", level: 85 },
-      { name: "Docker", level: 80 },
-      { name: "CI/CD", level: 75 },
-      { name: "Vercel", level: 90 },
-      { name: "GitHub Actions", level: 80 },
-      { name: "Monitoring", level: 75 },
+      { name: "Make (Integromat)", level: 90 },
+      { name: "n8n", level: 85 },
+      { name: "Zapier", level: 80 },
+      { name: "Power Automate", level: 75 },
+      { name: "Scripts de Automatización", level: 85 },
+      { name: "Webhooks & APIs", level: 90 },
     ]
   }
 ]
