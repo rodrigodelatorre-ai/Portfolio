@@ -1,49 +1,12 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
-import { Mail, Send, Instagram, Linkedin, Youtube, MessageSquare } from "lucide-react"
+import { Mail, Instagram, Linkedin, Youtube } from "lucide-react"
 import Link from "next/link"
+import { CalBooking } from "@/components/cal-booking"
 
 export function ContactSection() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-  
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    })
-  }
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulación de envío (aquí se integraría con un servicio real)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reiniciar formulario después de un tiempo
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormState({
-        name: "",
-        email: "",
-        message: ""
-      })
-    }, 5000)
-  }
-  
   const socialLinks = [
     { 
       name: "Email", 
@@ -94,100 +57,14 @@ export function ContactSection() {
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Formulario de contacto */}
+          {/* Calendario de Cal.com */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-8 neon-border h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold">Envíame un mensaje</h3>
-              </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium block">
-                    Nombre
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formState.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-[#00F2FF] focus:ring-1 focus:ring-[#00F2FF] transition-colors outline-none"
-                    disabled={isSubmitting || isSubmitted}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium block">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formState.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-[#00F2FF] focus:ring-1 focus:ring-[#00F2FF] transition-colors outline-none"
-                    disabled={isSubmitting || isSubmitted}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium block">
-                    Mensaje
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formState.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border focus:border-[#00F2FF] focus:ring-1 focus:ring-[#00F2FF] transition-colors outline-none resize-none"
-                    disabled={isSubmitting || isSubmitted}
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting || isSubmitted}
-                  className={`
-                    w-full py-3 px-6 rounded-lg font-medium transition-all flex items-center justify-center gap-2
-                    ${isSubmitted 
-                      ? 'bg-green-600 text-white' 
-                      : 'bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] text-white hover:shadow-lg hover:shadow-[#00F2FF]/20'}
-                  `}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="inline-block w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></span>
-                      <span>Enviando...</span>
-                    </>
-                  ) : isSubmitted ? (
-                    <>
-                      <span>¡Mensaje enviado!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>Enviar mensaje</span>
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            </Card>
+            <CalBooking />
           </motion.div>
           
           {/* Información de contacto */}

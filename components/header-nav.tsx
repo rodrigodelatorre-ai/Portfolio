@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
-import { Instagram, Linkedin, Youtube, Mail, Menu, X, User, Code, Briefcase, GraduationCap } from "lucide-react"
+import { Menu, X, User, Code, Briefcase, GraduationCap } from "lucide-react"
 
 export function HeaderNav() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -60,21 +60,13 @@ export function HeaderNav() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16 relative">
-          {/* Logo/Theme */}
+          {/* Selector de Tema */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="flex items-center gap-4"
           >
-            <Link 
-              href="#top" 
-              className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] hover:opacity-80 transition-opacity"
-            >
-              <span className="hidden sm:inline">RDeLaTorre</span>
-              <span className="sm:hidden">RDT</span>
-            </Link>
-            
             <div className="neon-border rounded-full p-1">
               <ThemeToggle />
             </div>
@@ -93,6 +85,7 @@ export function HeaderNav() {
                 { href: "#skills", label: "Habilidades", icon: Code },
                 { href: "#projects", label: "Proyectos", icon: Briefcase },
                 { href: "#journey", label: "Trayectoria", icon: GraduationCap },
+                { href: "#contact", label: "Contacto", icon: User },
               ].map((item) => (
                 <motion.div key={item.href} variants={itemVariants}>
                   <Link
@@ -108,31 +101,8 @@ export function HeaderNav() {
             </motion.nav>
           </div>
 
-          {/* Iconos Sociales */}
-          <div className="hidden md:flex">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex gap-4"
-            >
-              {[
-                { href: "mailto:rodrigodelatorreai@gmail.com", icon: Mail },
-                { href: "https://www.instagram.com/rodrigodelatorre_ai/", icon: Instagram },
-                { href: "https://www.linkedin.com/in/rodrigo-de-la-torre-ai", icon: Linkedin },
-                { href: "https://youtube.com/@RodrigoDeLaTorre-IA", icon: Youtube },
-              ].map((item, i) => (
-                <Link
-                  key={i}
-                  href={item.href}
-                  target={item.href.startsWith('mailto') ? undefined : "_blank"}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
-                >
-                  <item.icon className="w-5 h-5 text-[#00F2FF]" />
-                </Link>
-              ))}
-            </motion.div>
-          </div>
+          {/* Espacio para mantener el balance */}
+          <div className="w-10"></div>
 
           {/* Botón Menú Móvil */}
           <motion.button
@@ -168,6 +138,7 @@ export function HeaderNav() {
                   { href: "#skills", label: "Habilidades", icon: Code },
                   { href: "#projects", label: "Proyectos", icon: Briefcase },
                   { href: "#journey", label: "Trayectoria", icon: GraduationCap },
+                  { href: "#contact", label: "Contacto", icon: User },
                 ].map((item, i) => (
                   <Link
                     key={i}
@@ -179,25 +150,6 @@ export function HeaderNav() {
                     <span>{item.label}</span>
                   </Link>
                 ))}
-                
-                {/* Iconos sociales para móvil */}
-                <div className="flex justify-around mt-4 pt-4 border-t border-border">
-                  {[
-                    { href: "mailto:rodrigodelatorreai@gmail.com", icon: Mail },
-                    { href: "https://www.instagram.com/rodrigodelatorre_ai/", icon: Instagram },
-                    { href: "https://www.linkedin.com/in/rodrigo-de-la-torre-ai", icon: Linkedin },
-                    { href: "https://youtube.com/@RodrigoDeLaTorre-IA", icon: Youtube },
-                  ].map((item, i) => (
-                    <Link
-                      key={i}
-                      href={item.href}
-                      target={item.href.startsWith('mailto') ? undefined : "_blank"}
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-background/10 hover:bg-background/20 transition-colors neon-border"
-                    >
-                      <item.icon className="w-5 h-5 text-[#00F2FF]" />
-                    </Link>
-                  ))}
-                </div>
               </div>
             </div>
           </motion.div>
