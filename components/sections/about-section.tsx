@@ -40,7 +40,7 @@ export function AboutSection() {
             <span className="relative z-10">Sobre mí</span>
             <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] rounded-full"></span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-white text-base opacity-90 max-w-2xl mx-auto">
             Desarrollador de IA y creador de contenido especializado en transformar ideas innovadoras en soluciones tecnológicas de vanguardia
           </p>
         </motion.div>

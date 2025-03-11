@@ -123,6 +123,33 @@
   filter: blur(8px);
 }
 
+/* Neon Border Full - Para contenedores en todas las vistas */
+.neon-border-full {
+  position: relative;
+  box-shadow: 
+    0 0 10px rgba(var(--neon-primary), 0.5),
+    inset 0 0 10px rgba(var(--neon-primary), 0.5);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.neon-border-full::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, 
+    rgba(var(--neon-primary), 0.3),
+    rgba(var(--neon-secondary), 0.3)
+  );
+  border-radius: inherit;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
 /* Header Navigation */
 .header-nav {
   @apply fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80;

@@ -172,7 +172,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-5 md:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -186,7 +186,7 @@ export function HeroSection() {
             <ArrowDown className="w-5 h-5 text-[#00F2FF]" />
           </Link>
         </motion.div>
-        <span className="text-xs text-muted-foreground mt-2">Scroll</span>
+        <span className="text-xs text-white opacity-80 mt-2">Scroll</span>
       </motion.div>
     </section>
   )

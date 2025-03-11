@@ -65,7 +65,9 @@ export function ContactSection() {
             transition={{ duration: 0.6 }}
             className="h-full"
           >
-            <CalBooking />
+            <div className="w-full h-full neon-border-full">
+              <CalBooking />
+            </div>
           </motion.div>
           
           {/* Información de contacto */}
@@ -76,7 +78,7 @@ export function ContactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="h-full"
           >
-            <Card className="p-8 neon-border h-full flex flex-col">
+            <Card className="p-8 neon-border-full h-full flex flex-col">
               <h3 className="text-xl font-bold mb-6 text-white">Conectemos</h3>
               <p className="text-white text-base opacity-90 mb-6">
                 Estoy siempre abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. 
