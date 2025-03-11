@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from 'react'
 import { HeaderNav } from '@/components/header-nav'
 import { NeuralBackground } from '@/components/neural-background'
 import { HeroSection } from '@/components/sections/hero-section'
@@ -11,6 +12,16 @@ import { ContactSection } from '@/components/sections/contact-section'
 import { Footer } from '@/components/footer'
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null // o un placeholder si lo prefieres
+  }
+
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Fondo Neural */}

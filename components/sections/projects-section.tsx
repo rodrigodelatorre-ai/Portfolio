@@ -69,7 +69,7 @@ export function ProjectsSection() {
             <span className="relative z-10">Proyectos</span>
             <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#00F2FF] to-[#FF00E5] rounded-full"></span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-white text-base opacity-90 max-w-2xl mx-auto">
             Explorando los límites de la tecnología a través de proyectos innovadores
           </p>
         </motion.div>
@@ -142,7 +142,7 @@ export function ProjectsSection() {
                   <h3 className="text-xl font-bold mb-2 group-hover:text-[#00F2FF] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="text-white text-sm mb-4">
                     {project.description}
                   </p>
                   
@@ -151,13 +151,13 @@ export function ProjectsSection() {
                     {project.tech.slice(0, 3).map((tech, i) => (
                       <span 
                         key={i} 
-                        className="text-xs bg-background/50 border border-border px-2 py-1 rounded"
+                        className="text-xs bg-background/50 border border-border px-2 py-1 rounded text-white"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-xs bg-background/50 border border-border px-2 py-1 rounded">
+                      <span className="text-xs bg-background/50 border border-border px-2 py-1 rounded text-white">
                         +{project.tech.length - 3}
                       </span>
                     )}
@@ -271,16 +271,16 @@ export function ProjectsSection() {
                     {/* Contenido */}
                     <div className="p-6">
                       <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none">
-                        <p className="text-lg text-muted-foreground">{project.description}</p>
-                        <h4 className="text-lg font-semibold mt-6 mb-3">Sobre el proyecto</h4>
-                        <p>{project.details}</p>
+                        <p className="text-lg text-white">{project.description}</p>
+                        <h4 className="text-lg font-semibold mt-6 mb-3 text-white">Sobre el proyecto</h4>
+                        <p className="text-white">{project.details}</p>
                         
-                        <h4 className="text-lg font-semibold mt-6 mb-3">Tecnologías</h4>
+                        <h4 className="text-lg font-semibold mt-6 mb-3 text-white">Tecnologías</h4>
                         <div className="flex flex-wrap gap-2 mt-4">
                           {project.tech.map((tech, i) => (
                             <span 
                               key={i} 
-                              className="text-sm bg-background/50 border border-border px-3 py-1 rounded-full"
+                              className="text-sm bg-background/50 border border-border px-3 py-1 rounded-full text-white"
                             >
                               {tech}
                             </span>

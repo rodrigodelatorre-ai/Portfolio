@@ -25,7 +25,7 @@ export function Footer() {
     },
     { 
       icon: Youtube, 
-      href: "https://youtube.com/@RodrigoDeLaTorre-IA",
+      href: "https://www.youtube.com/channel/UCWmREz2V0nyIQcE7EQCvevQ",
       label: "YouTube" 
     },
   ]
@@ -47,7 +47,7 @@ export function Footer() {
       links: [
         { name: "CognitiveDS", href: "https://www.cognitiveds.ai/" },
         { name: "AlquimIA Elite", href: "https://www.skool.com/alquimia-elite/about" },
-        { name: "Canal YouTube", href: "https://youtube.com/@RodrigoDeLaTorre-IA" },
+        { name: "Canal YouTube", href: "https://www.youtube.com/channel/UCWmREz2V0nyIQcE7EQCvevQ" },
       ]
     },
   ]
